@@ -12,6 +12,12 @@ class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button.setOnClickListener {
+            startFoo()
+        }
+    }
+
+    private fun startFoo(){
+        view?.post {
             findNavController().navigate(NotificationsFragmentDirections.actionNotificationsFragmentToFooFragment())
         }
     }

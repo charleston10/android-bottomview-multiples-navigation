@@ -17,6 +17,12 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button.setOnClickListener {
+            startFoo()
+        }
+    }
+
+    private fun startFoo(){
+        view?.post {
             findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToFooFragment())
         }
     }
