@@ -17,6 +17,6 @@
     <fragment
         tools:layout="@layout/fragment_foo"
         android:id="@+id/fooFragment2"
-        android:name="com.minibit.myapplication.ui.screen.FooFragment"
+        android:name="com.minibit.myapplication.ui.foo.FooFragment"
         android:label="FooFragment" />
 </navigation>
