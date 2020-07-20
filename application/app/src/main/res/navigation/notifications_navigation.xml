@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/notificationsFragment">
+
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.minibit.myapplication.ui.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" >
+        <action
+            android:id="@+id/action_notificationsFragment_to_fooFragment"
+            app:destination="@id/fooFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fooFragment"
+        android:name="com.minibit.myapplication.ui.screen.FooFragment"
+        android:label="FooFragment"
+        tools:layout="@layout/fragment_foo" />
+</navigation>
