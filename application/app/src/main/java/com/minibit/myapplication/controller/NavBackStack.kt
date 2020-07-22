@@ -1,9 +1,9 @@
 package com.minibit.myapplication.controller
 
-class BackStack : ArrayList<Int>() {
+class NavBackStack : ArrayList<Int>() {
     companion object {
-        fun of(vararg elements: Int): BackStack {
-            val b = BackStack()
+        fun of(vararg elements: Int): NavBackStack {
+            val b = NavBackStack()
             b.addAll(elements.toTypedArray())
             return b
         }

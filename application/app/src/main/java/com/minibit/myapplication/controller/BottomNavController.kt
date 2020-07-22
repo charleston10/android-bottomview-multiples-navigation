@@ -20,7 +20,7 @@ class BottomNavController(
 
     private lateinit var fragmentManager: FragmentManager
 
-    private val navigationBackStack = BackStack.of()
+    private val navigationBackStack = NavBackStack.of()
 
     private var listener: OnNavigationItemChanged? = null
     private var navGraphProvider: NavGraphProvider? = null
