@@ -14,7 +14,8 @@ import com.minibit.myapplication.R
 
 class BottomNavController(
     context: Context,
-    @IdRes val containerId: Int
+    @IdRes val containerId: Int,
+    val containerInitId: Int
 ) : NavController() {
 
     private val navigationBackStack = BackStack.of()
@@ -108,8 +109,13 @@ class BottomNavController(
         if (navigationBackStack.size > 1) {
             navigationBackStack.removeLast()
             listener?.onBackItem(onNavigationItemSelected())
-        } else if (navigationBackStack.size == 1) {
-
+        } else if (
+            //the last item not is initial (in this case, reset navigation)
+            navigationBackStack.size == 1
+            && (navigationBackStack.last() != containerInitId)
+        ) {
+            onNavigationItemSelected(containerInitId)
+            this.listener?.onNavigationReset(containerInitId)
         }
     }
 
