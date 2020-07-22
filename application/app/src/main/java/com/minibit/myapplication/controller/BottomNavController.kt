@@ -15,11 +15,13 @@ import com.minibit.myapplication.R
 class BottomNavController(
     context: Context,
     @IdRes val containerId: Int,
-    val containerInitId: Int
+    private val containerInitId: Int
 ) : NavController() {
 
-    private val navigationBackStack = BackStack.of()
     private lateinit var fragmentManager: FragmentManager
+
+    private val navigationBackStack = BackStack.of()
+
     private var listener: OnNavigationItemChanged? = null
     private var navGraphProvider: NavGraphProvider? = null
 
@@ -107,15 +109,13 @@ class BottomNavController(
      */
     override fun onBackPressedOnNav() {
         if (navigationBackStack.size > 1) {
-            navigationBackStack.removeLast()
-            listener?.onBackItem(onNavigationItemSelected())
+            backNavigation()
         } else if (
             //the last item not is initial (in this case, reset navigation)
             navigationBackStack.size == 1
             && (navigationBackStack.last() != containerInitId)
         ) {
-            onNavigationItemSelected(containerInitId)
-            this.listener?.onNavigationReset(containerInitId)
+           resetNavigation()
         }
     }
 
@@ -144,5 +144,16 @@ class BottomNavController(
             .commit()
 
         navigationBackStack.moveLast(tagFragment)
+    }
+
+    private fun resetNavigation(){
+        navigationBackStack.removeLast()
+        onNavigationItemSelected(containerInitId)
+        this.listener?.onNavigationReset(containerInitId)
+    }
+
+    private fun backNavigation(){
+        navigationBackStack.removeLast()
+        listener?.onBackItem(onNavigationItemSelected())
     }
 }
